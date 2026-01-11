@@ -18,7 +18,9 @@ Key Features:
 <pre>
 Input (Legacy CSV):
 { "vin": "WVW-123", "temp_ext_f": 82.0, "batt_pct": 75 }
-  
+</pre>
+
+<pre>
 Output (VSS Standard):
 {
   "Vehicle.Cabin.HVAC.AmbientAirTemperature": 27.78,
