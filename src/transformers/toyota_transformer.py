@@ -1,4 +1,4 @@
-class ToyotaTransformer:
+class ToyotaTransformer: 
     def __init__(self):
         # Mapping Toyota OneAPI keys to VSS 4.0
         self.mapping = {
