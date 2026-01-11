@@ -29,10 +29,11 @@ Output (VSS Standard):
 }
 </pre>
 
-Handling the Data Spectrum 
-
-| Data Type | Source | Challenge | Your Solution |
+### 🏢 Multi-OEM Signal Mapping
+| OEM Group | Legacy Key (Raw) | Target VSS Path | Transformation Logic |
 | :--- | :--- | :--- | :--- |
-| **Legacy CAN** | Vehicle Internal Wires | Proprietary Hex/Binary | **Bit-masking & Scaling** |
-| **OBD-II** | Diagnostic Port | Request/Response Latency | **Standard J1979 Formulas** |
-| **CARIAD JSON** | Cloud/API | Messy naming (`kbi_mileage`) | **VSS Schema Mapping** |
+| **VW Group** | `kbi_mileage` | `Vehicle.TraveledDistance` | Direct Mapping |
+| **VW Group** | `soc_level` | `Vehicle.Powertrain.Battery.StateOfCharge` | Direct Mapping |
+| **Mercedes-Benz** | `odo` | `Vehicle.TraveledDistance` | Direct Mapping |
+| **Mercedes-Benz** | `tirepressurefrontleft` | `Vehicle.Chassis.Axle.Row1.Wheel.Left.Tire.Pressure` | **Bar to kPa (x100)** |
+| **Mercedes-Benz** | `f_tank_level_pct` | `Vehicle.Powertrain.FuelSystem.RelativeLevel` | Direct Mapping |
