@@ -1,7 +1,7 @@
-import sys
 import os
+import json
 
-# Import all your transformers
+# Import all 10 transformers from your transformers package
 from transformers.vw_transformer import VWTransformer
 from transformers.mercedes_transformer import MercedesTransformer
 from transformers.tesla_transformer import TeslaTransformer
@@ -15,7 +15,8 @@ from transformers.jaguar_transformer import JaguarTransformer
 
 class VSSOrchestrator:
     def __init__(self):
-        self.transformers = {
+        # Dictionary mapping brand names to their specific logic
+        self.adapters = {
             "VW": VWTransformer(),
             "MERCEDES": MercedesTransformer(),
             "TESLA": TeslaTransformer(),
@@ -28,25 +29,26 @@ class VSSOrchestrator:
             "JAGUAR": JaguarTransformer()
         }
 
-    def process_data(self, raw_data, brand):
-        brand = brand.upper()
-        if brand in self.transformers:
-            print(f"Processing {brand} data...")
-            return self.transformers[brand].transform(raw_data)
-        else:
-            print(f"❌ Error: No transformer found for brand: {brand}")
-            return None
+    def standardize(self, brand, raw_payload):
+        """
+        Routes raw data to the correct adapter and returns VSS 4.0 JSON.
+        """
+        adapter = self.adapters.get(brand.upper())
+        if not adapter:
+            raise ValueError(f"No adapter found for brand: {brand}")
+            
+        return adapter.transform(raw_payload)
 
-# --- Example Usage ---
 if __name__ == "__main__":
     orchestrator = VSSOrchestrator()
     
-    # Example: A mixed batch of data coming in from a fleet
-    sample_payloads = [
-        {"brand": "VW", "data": {"vin": "WVW-123", "kbi_mileage": 55000}},
-        {"brand": "TESLA", "data": {"vin": "5YJ-999", "drive_state": {"odometer": 12000}}}
+    # Example: Simulating a multi-brand data stream
+    fleet_data = [
+        {"brand": "Tesla", "payload": {"vin": "5YJ-TSLA", "drive_state": {"odometer": 15000}}},
+        {"brand": "Mercedes", "payload": {"vin": "W1K-MBENZ", "tirepressurefrontleft": 2.4}}
     ]
 
-    for item in sample_payloads:
-        result = orchestrator.process_data(item["data"], item["brand"])
-        print(f"✅ VSS Output: {result}\n")
+    print("--- 🚗 VSS Standardization Report ---")
+    for car in fleet_data:
+        vss_json = orchestrator.standardize(car["brand"], car["payload"])
+        print(json.dumps(vss_json, indent=2))
