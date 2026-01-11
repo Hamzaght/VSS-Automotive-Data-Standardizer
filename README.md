@@ -50,28 +50,27 @@ This project harmonizes proprietary telemetry from the world's leading automaker
 
 This diagram illustrates how the `VSSOrchestrator` acts as a central hub, routing proprietary data from 10 different OEM schemas into a single, standardized VSS 4.0 output.
 
+```mermaid
 graph TD
-    %% Define the Input
     A[Raw OEM Data] --> B{VSS Orchestrator}
+    
+    %% Every OEM has its own path
+    B -->|Detect VW| C1[VW Transformer]
+    B -->|Detect MB| C2[Mercedes Transformer]
+    B -->|Detect BMW| C3[BMW Transformer]
+    B -->|Detect TSLA| C4[Tesla Transformer]
+    B -->|Detect STLA| C5[Stellantis Transformer]
+    B -->|Detect FORD| C6[Ford Transformer]
+    B -->|Detect HYU| C7[Hyundai Transformer]
+    B -->|Detect TOY| C8[Toyota Transformer]
+    B -->|Detect RR| C9[Rolls-Royce Transformer]
+    B -->|Detect JLR| C10[Jaguar Transformer]
 
-    %% Column 1: German & US Brands
-    B --> C1[VW Group]
-    B --> C2[Mercedes-Benz]
-    B --> C3[BMW Group]
-    B --> C4[Tesla]
-
-    %% Column 2: Ford & Asian Brands
-    B --> D1[Ford Pro]
-    B --> D2[Stellantis]
-    B --> D3[Hyundai-Kia]
-    B --> D4[Toyota]
-
-    %% Column 3: Luxury Brands
-    B --> E1[Rolls-Royce]
-    B --> E2[Jaguar JLR]
-
-    %% Merge all into Output
-    C1 & C2 & C3 & C4 & D1 & D2 & D3 & D4 & E1 & E2 --> F[Standardized VSS 4.0 JSON]
+    %% Merging back to unified output
+    C1 & C2 & C3 & C4 & C5 & C6 & C7 & C8 & C9 & C10 --> D[Standardized VSS JSON Output]
+    
+    D --> E[Unified Fleet Analytics]
+    D --> F[EU Data Act Compliance Ready]
 
     %% Final Downstream Use Cases
     F --> G[Unified Fleet Analytics]
