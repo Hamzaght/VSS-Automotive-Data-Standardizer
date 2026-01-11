@@ -1,4 +1,4 @@
-import struct
+import struct 
 
 class VSSUniversalTransformer:
     def __init__(self):
