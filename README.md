@@ -44,21 +44,5 @@ graph TD
     C & D & E & F & G --> H[Standardized VSS JSON Output]
     H --> I[Unified Fleet Analytics]
     H --> J[EU Data Act Compliance]
+---
 
-### Multi-OEM Signal Mapping  :
-
-This project harmonizes proprietary telemetry from the world's leading automakers into the **COVESA VSS 4.0** standard. Below is the mapping logic used across the 10 supported brands:
-
-| OEM Group | Legacy Key (Raw) | Target VSS 4.0 Path | Transformation Logic |
-| :--- | :--- | :--- | :--- |
-| **VW Group** | `kbi_mileage` | `Vehicle.TraveledDistance` | Direct Mapping |
-| **Mercedes-Benz** | `tirepressurefrontleft` | `Vehicle.Chassis.Axle.Row1.Wheel.Left.Tire.Pressure` | Bar to kPa (x100) |
-| **BMW Group** | `vehicle.travelledDistance` | `Vehicle.TraveledDistance` | Flattening Nested JSON |
-| **Tesla** | `odometer` | `Vehicle.TraveledDistance` | miles to km (x1.609) |
-| **Tesla** | `speed` | `Vehicle.Speed` | mph to km/h (x1.609) |
-| **Stellantis** | `energy.level` | `Vehicle.Powertrain.Battery.StateOfCharge` | Deep Key Extraction |
-| **Ford Pro** | `front_left` (Tire) | `Vehicle.Chassis.Axle.Row1.Wheel.Left.Tire.Pressure` | PSI to kPa (x6.89) |
-| **Hyundai-Kia** | `ev_battery_level` | `Vehicle.Powertrain.Battery.StateOfCharge` | Prefix-based Mapping |
-| **Toyota** | `fuel_level` | `Vehicle.Powertrain.FuelSystem.RelativeLevel` | Hybrid Architecture Merge |
-| **Rolls-Royce** | `battery_voltage` | `Vehicle.LowVoltageBattery.CurrentVoltage` | Ultra-Luxury Telemetry |
-| **Jaguar** | `sunroof_status` | `Vehicle.Cabin.Sunroof.IsOpen` | String to Boolean |
