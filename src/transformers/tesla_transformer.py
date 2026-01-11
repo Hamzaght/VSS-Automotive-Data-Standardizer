@@ -1,4 +1,4 @@
-class TeslaTransformer:
+class TeslaTransformer: 
     def __init__(self):
         # Mapping Tesla Fleet API to VSS 4.0
         self.mapping = {
