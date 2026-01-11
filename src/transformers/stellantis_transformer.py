@@ -1,5 +1,5 @@
 class StellantisTransformer:
-    def __init__(self):
+    def __init__(self): 
         # Mapping Stellantis/STLA Brain keys to VSS 4.0
         self.mapping = {
             "level": "Vehicle.Powertrain.Battery.StateOfCharge",
