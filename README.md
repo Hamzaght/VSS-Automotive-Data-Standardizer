@@ -13,3 +13,17 @@ Key Features:
 - Schema Mapping: Maps non-standard keys (e.g., bat_level) to VSS paths (Vehicle.Powertrain.Battery.StateOfCharge).
 - Automatic Normalization: Converts units to SI standards (e.g., Fahrenheit to Celsius) as required by the VSS specification.
 - OEM-Ready Output: Generates structured JSON ready for ingestion by cloud platforms like AWS IoT FleetWise or Microsoft SDV.
+
+📊 Example Transformation
+
+Input (Legacy CSV):
+{ "vin": "WVW-123", "temp_ext_f": 82.0, "batt_pct": 75 }
+
+Output (VSS Standard):
+{
+  "Vehicle.Cabin.HVAC.AmbientAirTemperature": 27.78,
+  "Vehicle.Powertrain.Battery.StateOfCharge": 75,
+  "Metadata": { "Compliance": "EU-Data-Act-2026" }
+}
+
+
