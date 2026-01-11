@@ -29,3 +29,10 @@ Output (VSS Standard):
 }
 </pre>
 
+Handling the Data Spectrum 
+
+| Data Type | Source | Challenge | Your Solution |
+| :--- | :--- | :--- | :--- |
+| **Legacy CAN** | Vehicle Internal Wires | Proprietary Hex/Binary | **Bit-masking & Scaling** |
+| **OBD-II** | Diagnostic Port | Request/Response Latency | **Standard J1979 Formulas** |
+| **CARIAD JSON** | Cloud/API | Messy naming (`kbi_mileage`) | **VSS Schema Mapping** |
