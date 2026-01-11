@@ -29,7 +29,23 @@ Output (VSS Standard):
 }
 </pre>
 
-### Multi-OEM Signal Mapping 
+### System Architecture
+
+This diagram illustrates how the `VSSOrchestrator` acts as a central hub, routing proprietary data from 10 different OEM schemas into a single, standardized VSS 4.0 output.
+
+```mermaid
+graph TD
+    A[Raw OEM Data] --> B{VSS Orchestrator}
+    B -->|Detect VW| C[VW Transformer]
+    B -->|Detect Tesla| D[Tesla Transformer]
+    B -->|Detect Ford| E[Ford Transformer]
+    B -->|Detect Toyota| F[Toyota Transformer]
+    B -->|Detect JLR/Rolls| G[Luxury Transformers]
+    C & D & E & F & G --> H[Standardized VSS JSON Output]
+    H --> I[Unified Fleet Analytics]
+    H --> J[EU Data Act Compliance]
+
+### Multi-OEM Signal Mapping  :
 
 This project harmonizes proprietary telemetry from the world's leading automakers into the **COVESA VSS 4.0** standard. Below is the mapping logic used across the 10 supported brands:
 
