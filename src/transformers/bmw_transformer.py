@@ -24,5 +24,5 @@ class BMWTransformer:
 bmw_raw = {
     "vin": "WBA-BMW-2026", 
     "attributes": {"vehicle.vehicle.travelledDistance": {"value": 15420}}
-}
+} 
 print(BMWTransformer().transform(bmw_raw))
