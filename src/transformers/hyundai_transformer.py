@@ -22,7 +22,7 @@ class HyundaiTransformer:
                 
                 vss_output["signals"][vss_path] = value
         
-        return vss_output
+        return vss_output 
 
 # Quick Test
 hyundai_raw = {"vin": "KMH-123", "status": {"ev_battery_level": 84, "range": 412}}
