@@ -1,5 +1,5 @@
 class RollsRoyceTransformer:
-    def __init__(self):
+    def __init__(self): 
         self.mapping = {
             "mileage": "Vehicle.TraveledDistance",
             "tank_content": "Vehicle.Powertrain.FuelSystem.AbsoluteLevel",
