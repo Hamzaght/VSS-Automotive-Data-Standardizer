@@ -15,7 +15,7 @@ Key Features:
 - OEM-Ready Output: Generates structured JSON ready for ingestion by cloud platforms like AWS IoT FleetWise or Microsoft SDV.
 
 📊 Example Transformation
-
+<pre>
 Input (Legacy CSV):
 { "vin": "WVW-123", "temp_ext_f": 82.0, "batt_pct": 75 }
 
@@ -25,5 +25,5 @@ Output (VSS Standard):
   "Vehicle.Powertrain.Battery.StateOfCharge": 75,
   "Metadata": { "Compliance": "EU-Data-Act-2026" }
 }
-
+</pre>
 
