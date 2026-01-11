@@ -1,4 +1,4 @@
-class MercedesTransformer:
+class MercedesTransformer: 
     def __init__(self):
         # Mapping Mercedes proprietary names to VSS 4.0
         self.mapping = {
