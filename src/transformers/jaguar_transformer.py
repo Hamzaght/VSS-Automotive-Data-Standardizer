@@ -1,4 +1,4 @@
-class JaguarTransformer:
+class JaguarTransformer: 
     def __init__(self):
         self.mapping = {
             "last_odometer_reading": "Vehicle.TraveledDistance",
