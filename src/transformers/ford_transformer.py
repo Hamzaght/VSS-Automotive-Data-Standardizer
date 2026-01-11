@@ -29,7 +29,7 @@ class FordTransformer:
                 vss_output["signals"][vss_path] = value
         
         return vss_output
-
+ 
 # Quick Test
 ford_raw = {"oem_vi_vin": "1FT-2026", "vehicle_data": {"tire_pressures": {"front_left": 35}}}
 print(FordTransformer().transform(ford_raw))
